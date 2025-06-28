@@ -43,7 +43,7 @@ int evaluate(char b[3][3]) {
 		}
 	}
 
-	// Checking for Diagonals for X or O victory.
+	// Checking for Diagonals for X or O victory
 	if (b[0][0]==b[1][1] && b[1][1]==b[2][2]) {
 		if (b[0][0]==player)
 			return +10;
