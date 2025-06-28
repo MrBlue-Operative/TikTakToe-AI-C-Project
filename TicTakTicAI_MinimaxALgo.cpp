@@ -18,8 +18,7 @@ bool isMovesLeft(char board[3][3]) {
 	return false;
 }
 
-// This is the evaluation function as discussed
-// in the previous article ( http://goo.gl/sJgv68 )
+// This is the evaluation function
 int evaluate(char b[3][3]) {
 	// Checking for Rows for X or O victory.
 	for (int row = 0; row<3; row++) {
@@ -96,12 +95,9 @@ int minimax(char board[3][3], int depth, bool isMax) {
 					// Make the move
 					board[i][j] = player;
 
-					// Call minimax recursively and choose
-					// the maximum value
 					best = max( best,
 					            minimax(board, depth+1, !isMax) );
 
-					// Undo the move
 					board[i][j] = '_';
 				}
 			}
@@ -113,16 +109,12 @@ int minimax(char board[3][3], int depth, bool isMax) {
 	else {
 		int best = 1000;
 
-		// Traverse all cells
 		for (int i = 0; i<3; i++) {
 			for (int j = 0; j<3; j++) {
-				// Check if cell is empty
 				if (board[i][j]=='_') {
 					// Make the move
 					board[i][j] = opponent;
 
-					// Call minimax recursively and choose
-					// the minimum value
 					best = min(best,
 					           minimax(board, depth+1, !isMax));
 
@@ -142,9 +134,6 @@ Move findBestMove(char board[3][3]) {
 	bestMove.row = -1;
 	bestMove.col = -1;
 
-	// Traverse all cells, evaluate minimax function for
-	// all empty cells. And return the cell with optimal
-	// value.
 	for (int i = 0; i<3; i++) {
 		for (int j = 0; j<3; j++) {
 			// Check if cell is empty
